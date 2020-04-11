@@ -26,17 +26,37 @@ class MainActivity : AppCompatActivity() {
         btn_closeParents.setOnClickListener { setTextFields("(") }
         btn_openParents.setOnClickListener { setTextFields(")") }
         btn_add.setOnClickListener {
-            dotPressed = false
-            setTextFields("+")
-
+            if (!operandPressed) {
+                dotPressed = false
+                setTextFields("+")
+                operandPressed = true
+            } else Toast.makeText(
+                this,
+                "ERROR! Operand pressed! Please input numbers",
+                Toast.LENGTH_SHORT
+            ).show();
         }
         btn_divided.setOnClickListener {
-            setTextFields("/")
-            dotPressed = false
+            if (!operandPressed) {
+                setTextFields("/")
+                dotPressed = false
+                operandPressed = true
+            } else Toast.makeText(
+                this,
+                "ERROR! Operand pressed! Please input numbers",
+                Toast.LENGTH_SHORT
+            ).show();
         }
         btn_multiply.setOnClickListener {
-            setTextFields("*")
-            dotPressed = false
+            if (!operandPressed) {
+                setTextFields("*")
+                dotPressed = false
+                operandPressed = true
+            } else Toast.makeText(
+                this,
+                "ERROR! Operand pressed! Please input numbers",
+                Toast.LENGTH_SHORT
+            ).show();
         }
         btn_del.setOnClickListener {
             val str = math_operation.text.toString()
@@ -46,20 +66,57 @@ class MainActivity : AppCompatActivity() {
             result_text.text = ""
         }
         btn_subtraction.setOnClickListener {
-            setTextFields("-")
-            dotPressed = false
+            if (!operandPressed) {
+                setTextFields("-")
+                dotPressed = false
+                operandPressed = true
+            } else Toast.makeText(
+                this,
+                "ERROR! Operand pressed! Please input numbers",
+                Toast.LENGTH_SHORT
+            ).show();
         }
 
-        btn_one.setOnClickListener { setTextFields("1") }
-        btn_two.setOnClickListener { setTextFields("2") }
-        btn_three.setOnClickListener { setTextFields("3") }
-        btn_four.setOnClickListener { setTextFields("4") }
-        btn_five.setOnClickListener { setTextFields("5") }
-        btn_six.setOnClickListener { setTextFields("6") }
-        btn_seven.setOnClickListener { setTextFields("7") }
-        btn_eight.setOnClickListener { setTextFields("8") }
-        btn_nine.setOnClickListener { setTextFields("9") }
-        btn_zero.setOnClickListener { setTextFields("0") }
+        btn_one.setOnClickListener {
+            setTextFields("1")
+            operandPressed = false
+        }
+        btn_two.setOnClickListener {
+            setTextFields("2")
+            operandPressed = false
+        }
+        btn_three.setOnClickListener {
+            setTextFields("3")
+            operandPressed = false
+        }
+        btn_four.setOnClickListener {
+            setTextFields("4")
+            operandPressed = false
+        }
+        btn_five.setOnClickListener {
+            setTextFields("5")
+            operandPressed = false
+        }
+        btn_six.setOnClickListener {
+            setTextFields("6")
+            operandPressed = false
+        }
+        btn_seven.setOnClickListener {
+            setTextFields("7")
+            operandPressed = false
+        }
+        btn_eight.setOnClickListener {
+            setTextFields("8")
+            operandPressed = false
+        }
+        btn_nine.setOnClickListener {
+            setTextFields("9")
+            operandPressed = false
+        }
+        btn_zero.setOnClickListener {
+            setTextFields("0")
+            operandPressed = false
+        }
 
 
         btn_dot.setOnClickListener {
@@ -96,6 +153,7 @@ class MainActivity : AppCompatActivity() {
             math_operation.text = result_text.text
             result_text.text = ""
         }
+
         math_operation.append(str)
     }
 }
